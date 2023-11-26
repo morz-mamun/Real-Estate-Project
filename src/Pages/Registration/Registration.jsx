@@ -32,7 +32,7 @@ const Registration = () => {
         // user update profile
         updateUserProfile(data.name, data.photoURL)
         .then(() => {
-
+            
             Toast.fire({
                 icon: "success",
                 title: "User Registration Successfully.",
