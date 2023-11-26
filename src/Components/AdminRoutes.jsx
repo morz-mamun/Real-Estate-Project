@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
-import { MdOutlineManageAccounts } from "react-icons/md";
+import { MdOutlineManageAccounts, MdRateReview } from "react-icons/md";
 const AdminRoutes = () => {
     return (
         <div>
@@ -25,7 +25,7 @@ const AdminRoutes = () => {
           </li>
           <li className="uppercase text-white font-bold">
             <NavLink to={"/dashboard/manageReviews"}>
-             <MdOutlineManageAccounts className="text-white text-lg"></MdOutlineManageAccounts>
+             <MdRateReview className="text-white text-lg"></MdRateReview>
               Manage Reviews
             </NavLink>
           </li>

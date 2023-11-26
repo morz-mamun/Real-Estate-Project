@@ -5,9 +5,11 @@ import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
 import bg from '../../assets/bg.jpg'
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Registration = () => {
   const { userRegistration, updateUserProfile } = useAuth();
+  const axiosPublic = useAxiosPublic()
   const { register, handleSubmit, formState: {errors} } = useForm();
   const navigate = useNavigate()
 
@@ -32,13 +34,20 @@ const Registration = () => {
         // user update profile
         updateUserProfile(data.name, data.photoURL)
         .then(() => {
-            
-            Toast.fire({
+          // created user enter in database
+            const userInfo = {
+              name: data.name,
+              email: data.email
+            }
+            axiosPublic.post('/users', userInfo)
+            .then(() => {
+              Toast.fire({
                 icon: "success",
                 title: "User Registration Successfully.",
               });
 
               navigate('/login')
+            })
         })
         .catch((err) => {
             Toast.fire({

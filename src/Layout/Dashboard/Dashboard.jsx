@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import RoofingIcon from "@mui/icons-material/Roofing";
 import AdminRoutes from "../../Components/AdminRoutes";
+import { FaAddressCard, FaHome, FaList, FaShoppingBag } from "react-icons/fa";
 
 
 const Dashboard = () => {
@@ -15,6 +16,23 @@ const Dashboard = () => {
         </div>
         {/* admin routes */}
         <AdminRoutes></AdminRoutes>
+        {/* agent routes */}
+
+        <div className="divider"></div>
+        <ul className="menu p-4 space-y-2">
+        <li className="uppercase text-white font-bold">
+            <NavLink to={"/"}>
+              <FaHome></FaHome>
+            Home
+            </NavLink>
+          </li>
+          <li className="uppercase text-white font-bold">
+            <NavLink to={"/ourOrder/contact"}>
+              <FaAddressCard></FaAddressCard>
+            Contact
+            </NavLink>
+          </li>
+        </ul>
        
       </div>
       <div className="flex-1 px-5">
