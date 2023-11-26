@@ -2,6 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import RoofingIcon from "@mui/icons-material/Roofing";
 import AdminRoutes from "../../Components/AdminRoutes";
 import { FaAddressCard, FaHome, FaList, FaShoppingBag } from "react-icons/fa";
+import DashboardNav from "../../Shared/Navbar/DashboardNav/DashboardNav";
 
 
 const Dashboard = () => {
@@ -15,6 +16,7 @@ const Dashboard = () => {
           <RoofingIcon style={{ color: "#5afc03", fontSize: 30 }}></RoofingIcon>
         </div>
         {/* admin routes */}
+        
         <AdminRoutes></AdminRoutes>
         {/* agent routes */}
 
@@ -36,6 +38,7 @@ const Dashboard = () => {
        
       </div>
       <div className="flex-1 px-5">
+      {/* <DashboardNav></DashboardNav> */}
         <Outlet></Outlet>
       </div>
     </div>

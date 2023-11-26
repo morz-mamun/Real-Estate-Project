@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
 import Dashboard from "../Layout/Dashboard/Dashboard";
+import AllUsers from "../Pages/Dashboard/Admin/AllUsers/AllUsers";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       //admin routes
+      {
+        path: 'manageUsers',
+        element: <AllUsers></AllUsers>
+      }
     ],
   },
 ]);
