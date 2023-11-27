@@ -7,6 +7,7 @@ import Dashboard from "../Layout/Dashboard/Dashboard";
 import AllUsers from "../Pages/Dashboard/Admin/AllUsers/AllUsers";
 import PrivateRoute from "./PrivateRoute";
 import AddProperty from "../Pages/Registration/AddProperty/AddProperty";
+import AllProperty from "../Pages/AllProperty/AllProperty";
 
 export const router = createBrowserRouter([
   {
@@ -26,9 +27,14 @@ export const router = createBrowserRouter([
         element: <Login></Login>,
       },
       {
-        path: 'addProperty',
-        element: <AddProperty></AddProperty>
+        path: '/addProperty',
+        element: <PrivateRoute><AddProperty></AddProperty></PrivateRoute>
+      },
+      {
+        path: '/allProperty',
+        element: <AllProperty></AllProperty>
       }
+      
     ],
   },
     //Dashboard routes

@@ -26,7 +26,7 @@ const Navbar = () => {
         <NavLink to={"/"}>Home</NavLink>
       </li>
       <li>
-        <NavLink to={"/allProperties"}>All Properties</NavLink>
+        <NavLink to={"/allProperty"}>All Properties</NavLink>
       </li>
       { data?.role === 'admin' || data?.role === 'agent' ? <li>
         <NavLink to={"/addProperty"}>Add Property</NavLink>
@@ -53,7 +53,7 @@ const Navbar = () => {
     })
   };
   return (
-    <div className="navbar z-10 right-0.5 left-0.5 fixed  max-w-7xl mx-auto text-white font-bold">
+    <div className="navbar  right-0.5 left-0.5  max-w-7xl fixed mx-auto text-white font-bold">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="lg:hidden cursor-pointer">

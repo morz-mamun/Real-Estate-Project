@@ -10,7 +10,7 @@ const Dashboard = () => {
 const [data] = useUserRole()
   return (
     <div className="flex">
-      <div className="w-72 mt-20 min-h-[calc(100vh-80px)] text-center py-5 bg-slate-600">
+      <div className="w-72 min-h-screen text-center py-5 bg-slate-600">
         <div>
           <p className="btn btn-ghost md:text-xl uppercase text-white">
             <span className="text-[#5afc03]">Mor</span>ZE
