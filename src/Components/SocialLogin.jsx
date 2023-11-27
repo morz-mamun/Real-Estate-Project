@@ -2,10 +2,12 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const SocialLogin = () => {
     const {googleLogin} = useAuth()
     const navigate = useNavigate()
+    const axiosPublic = useAxiosPublic()
 
       // sweet alert code 
       const Toast = Swal.mixin({
@@ -22,13 +24,21 @@ const SocialLogin = () => {
 
     const handleGoogleLogin = () => {
         googleLogin()
-        .then(() => {
-            Toast.fire({
+        .then((result) => {
+            const userInfo = {
+              name: result.user.displayName,
+              email: result.user.email
+            }
+            axiosPublic.post('/users', userInfo)
+            .then(() => {
+              Toast.fire({
                 icon: "success",
                 title: "Login Successfully.",
               });
-        //user navigate to the  page
+        //user navigate to the home page
               navigate('/')
+            })
+           
         })
         .catch((err) => {
             Toast.fire({

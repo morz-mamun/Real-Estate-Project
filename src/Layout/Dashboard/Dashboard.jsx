@@ -10,7 +10,7 @@ const Dashboard = () => {
 const [data] = useUserRole()
   return (
     <div className="flex">
-      <div className="w-72 min-h-screen text-center py-5 bg-slate-600">
+      <div className="w-72 mt-20 min-h-[calc(100vh-80px)] text-center py-5 bg-slate-600">
         <div>
           <p className="btn btn-ghost md:text-xl uppercase text-white">
             <span className="text-[#5afc03]">Mor</span>ZE
@@ -20,11 +20,14 @@ const [data] = useUserRole()
         {/* admin routes */}
 
         {data?.role === "admin" && <AdminRoutes></AdminRoutes>}
+        
+       
         {/* agent routes */}
         {data?.role === "agent" && <AgentRoutes></AgentRoutes>}
-
-        {data && <UserRoutes></UserRoutes>}
-        <div className="divider"></div>
+        
+        {/* normal user role */}
+        { data?.role === 'admin' || data?.role === 'agent' ? '' : <UserRoutes></UserRoutes>}
+        <div className="border-b-2"></div>
         <ul className="menu p-4 space-y-2">
           <li className="uppercase text-white font-bold">
             <NavLink to={"/"}>
