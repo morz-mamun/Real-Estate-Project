@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import Cover from "../../Shared/Cover/Cover";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
+
 import PropertyCart from "../Registration/AddProperty/PropertyCart";
 import coverBg from '../../assets/coverbg.jpg'
 import SectionTitle from "../../Components/SectionTitle";
@@ -12,13 +12,13 @@ const AllProperty = () => {
     const {data: VerifiedProperties=[]} = useQuery({
         queryKey: ['verifiedProperties'],
         queryFn: async () => {
-          const res = await axiosSecure.get('/verifiedProperty')
+          const res = await axiosSecure.get('/allProperty/status')
           return res.data
         }
       })
     return (
         <div>
-           <Cover img={coverBg}></Cover>
+           <Cover img={coverBg} title={'Unlock Your Dream Home'} description={'Where Dreams Find a Home, and Homes Become Dreams. Explore Possibilities Beyond Walls.'}></Cover>
            <SectionTitle heading={'All Properties'}></SectionTitle>
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {

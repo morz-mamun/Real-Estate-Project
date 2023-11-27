@@ -10,6 +10,7 @@ import AddProperty from "../Pages/Registration/AddProperty/AddProperty";
 import AllProperty from "../Pages/AllProperty/AllProperty";
 import AdminRoute from "./AdminRoute";
 import ManageProperties from "../Pages/Dashboard/Admin/ManageProperties/ManageProperties";
+import PropertyDetails from "../Pages/AllProperty/PropertyDetails";
 
 export const router = createBrowserRouter([
   {
@@ -34,7 +35,12 @@ export const router = createBrowserRouter([
       },
       {
         path: '/allProperty',
-        element: <AllProperty></AllProperty>
+        element: <PrivateRoute><AllProperty></AllProperty></PrivateRoute>
+      },
+      {
+        path: '/propertyDetails/:id',
+        element: <PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/allProperty/${params.id}`)
       }
       
     ],

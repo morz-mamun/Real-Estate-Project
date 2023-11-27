@@ -39,7 +39,7 @@ const ManageProperties = () => {
     //   location: location,
     //   agentName: name,
     //   agentImage: agentImage,
-      status: "Verified",
+      status: "verified",
     //   price: price,
     };
 
