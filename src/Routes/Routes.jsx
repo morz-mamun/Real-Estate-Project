@@ -8,6 +8,8 @@ import AllUsers from "../Pages/Dashboard/Admin/AllUsers/AllUsers";
 import PrivateRoute from "./PrivateRoute";
 import AddProperty from "../Pages/Registration/AddProperty/AddProperty";
 import AllProperty from "../Pages/AllProperty/AllProperty";
+import AdminRoute from "./AdminRoute";
+import ManageProperties from "../Pages/Dashboard/Admin/ManageProperties/ManageProperties";
 
 export const router = createBrowserRouter([
   {
@@ -45,7 +47,11 @@ export const router = createBrowserRouter([
       //admin routes
       {
         path: 'manageUsers',
-        element: <AllUsers></AllUsers>
+        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+      },
+      {
+        path: 'manageProperties',
+        element: <AdminRoute><ManageProperties></ManageProperties></AdminRoute>
       }
     ],
   },

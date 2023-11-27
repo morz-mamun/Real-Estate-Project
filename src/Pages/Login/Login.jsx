@@ -24,7 +24,7 @@ const Login = () => {
   const Toast = Swal.mixin({
     toast: true,
     position: "top",
-    iconColor: "blue",
+    iconColor: "green",
     customClass: {
       popup: "colored-toast",
     },

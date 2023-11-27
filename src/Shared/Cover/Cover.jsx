@@ -6,7 +6,8 @@ const Cover = ({img, title, description}) => {
           style={{
             backgroundImage:
               `url(${img})`,
-              backgroundSize:'cover'
+              backgroundSize:'cover',
+              backgroundPosition: 'center'
           }}
         >
           <div className="hero-overlay bg-opacity-25"></div>

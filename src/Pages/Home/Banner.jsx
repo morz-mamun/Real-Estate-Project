@@ -16,7 +16,7 @@ const Banner = () => {
         <div className="bg-black bg-opacity-20 rounded-lg">
           <div className="hero-content text-center text-neutral-content">
             <div className="md:w-[800px] md:p-10 p-10">
-              <p className="mb-5 text-[#5afc03]">Real Estate Solution</p>
+              <p className="mb-5 text-red-600 font-bold text-xl">Real Estate Solution</p>
               <h1 className="mb-5 md:text-5xl font-bold uppercase">
                 Choose The Comfort Place To Stay 
               </h1>

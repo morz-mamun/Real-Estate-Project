@@ -4,13 +4,13 @@ import useUserRole from "../Hooks/useUserRole";
 
 const AgentRoute = ({ children }) => {
   const { user, loading } = useAuth();
-  const [data, isPending] = useUserRole();
+  const [allUser, isPending] = useUserRole();
   const location = useLocation()
 
   if (loading || isPending) {
     return <progress className="progress w-56"></progress>;
   }
-  if (user && data.role === "agent") {
+  if (user && allUser.role === "agent") {
     return children;
   }
   return <Navigate to={'/'} state={{from: location}} replace></Navigate>

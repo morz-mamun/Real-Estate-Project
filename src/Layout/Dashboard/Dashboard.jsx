@@ -7,7 +7,7 @@ import UserRoutes from "../../Components/UserRoutes";
 import useUserRole from "../../Hooks/useUserRole";
 
 const Dashboard = () => {
-const [data] = useUserRole()
+const [allUser] = useUserRole()
   return (
     <div className="flex">
       <div className="w-72 min-h-screen text-center py-5 bg-slate-600">
@@ -19,14 +19,14 @@ const [data] = useUserRole()
         </div>
         {/* admin routes */}
 
-        {data?.role === "admin" && <AdminRoutes></AdminRoutes>}
+        {allUser?.role === "admin" && <AdminRoutes></AdminRoutes>}
         
        
         {/* agent routes */}
-        {data?.role === "agent" && <AgentRoutes></AgentRoutes>}
+        {allUser?.role === "agent" && <AgentRoutes></AgentRoutes>}
         
         {/* normal user role */}
-        { data?.role === 'admin' || data?.role === 'agent' ? '' : <UserRoutes></UserRoutes>}
+        { allUser?.role === 'admin' || allUser?.role === 'agent' ? '' : <UserRoutes></UserRoutes>}
         <div className="border-b-2"></div>
         <ul className="menu p-4 space-y-2">
           <li className="uppercase text-white font-bold">

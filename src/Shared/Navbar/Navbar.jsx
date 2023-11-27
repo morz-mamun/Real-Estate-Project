@@ -6,7 +6,7 @@ import useUserRole from "../../Hooks/useUserRole";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
-  const [data] = useUserRole()
+  const [allUser] = useUserRole()
 
   // sweetAlert
   const Toast = Swal.mixin({
@@ -28,7 +28,7 @@ const Navbar = () => {
       <li>
         <NavLink to={"/allProperty"}>All Properties</NavLink>
       </li>
-      { data?.role === 'admin' || data?.role === 'agent' ? <li>
+      { allUser?.role === 'admin' || allUser?.role === 'agent' ? <li>
         <NavLink to={"/addProperty"}>Add Property</NavLink>
       </li> : '' }
       <li>
@@ -80,8 +80,8 @@ const Navbar = () => {
             
           </ul>
         </div>
-      <p className="btn btn-ghost md:text-xl uppercase"><span className="text-[#5afc03]">Mor</span>ZE</p>
-        <RoofingIcon style={{ color: '#5afc03', fontSize: 30,}}></RoofingIcon>
+      <p className="btn btn-ghost md:text-xl uppercase"><span className="text-red-600">Mor</span>ZE</p>
+        <RoofingIcon style={{ color: 'red', fontSize: 30,}}></RoofingIcon>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
@@ -92,7 +92,7 @@ const Navbar = () => {
           <>
             <button
               onClick={handleLogout}
-              className="btn btn-outline btn-sm text-[#5afc03] border-white font-bold"
+              className="btn btn-outline btn-sm text-red-600 hover:bg-red-600 border-white font-bold"
             >
               LogOut
             </button>
@@ -100,7 +100,7 @@ const Navbar = () => {
         ) : (
           <>
             <Link to={"/login"}>
-              <button className="btn btn-outline btn-sm text-[#5afc03] border-white font-bold">
+              <button className="btn btn-outline btn-sm text-red-600 hover:bg-red-600 border-red-600 font-bold">
                 Login
               </button>
             </Link>
@@ -130,7 +130,7 @@ const Navbar = () => {
             <li>
             <button
               onClick={handleLogout}
-              className=" text-[#5afc03] border-white font-bold"
+              className=" text-red-600 border-white font-bold"
             >
               LogOut
             </button>

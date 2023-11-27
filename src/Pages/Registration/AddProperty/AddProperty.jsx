@@ -4,56 +4,63 @@ import bg from "../../../assets/addbg.jpg";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useUserRole from "../../../Hooks/useUserRole";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 
 // image upload in imgbb
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddProperty = () => {
+  const {user} = useAuth()  
   const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
-  const axiosSecure = useAxiosSecure()
-
+  const axiosSecure = useAxiosSecure();
+  const [allUser] = useUserRole();
+  const navigate = useNavigate()
+  
 
   const onSubmit = async (data) => {
-    console.log(data);
     // image upload to imgbb and then get an url
-    const imageField = {image: data.image[0]}
+    const imageField = { image: data.image[0] };
     const res = await axiosPublic.post(image_hosting_API, imageField, {
-        headers: {
-            'content-type': 'multipart/form-data'
-        }
-    })
-    if(res.data.success){
-        //now send the property data to the server with image url
-        const property = {
-            title : data.title,
-            date: data.date,
-            location: data.location,
-            price: data.price,
-            image: res.data.data.display_url
-        }
-    const propertyRes = await axiosSecure.post('/allProperty', property)
-        if(propertyRes.data.insertedId){
-            reset()
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: `${data.title} is added to the All Property.`,
-                showConfirmButton: false,
-                timer: 1500
-              });
-        }
-        else{
-            Swal.fire({
-                position: "top-end",
-                icon: "error",
-                title: `Something is wrong`,
-                showConfirmButton: false,
-                timer: 1500
-              });
-    
-        }
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+    if (res.data.success) {
+      //now send the property data to the server with image url
+      const property = {
+        title: data.title,
+        date: data.date,
+        location: data.location,
+        price: data.price,
+        email: data.email,
+        name: data.name,
+        agentImage: data.agentImage,
+        propertyImage: res.data.data.display_url,
+      };
+      const propertyRes = await axiosSecure.post("/allProperty", property);
+      if (propertyRes.data.insertedId) {
+        reset();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${data.title} is added to the All Property.`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        // navigate('/allProperty')
+      } else {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: `Something is wrong`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     }
   };
   return (
@@ -62,10 +69,10 @@ const AddProperty = () => {
       style={{ backgroundImage: `url(${bg})` }}
     >
       <div className="hero-overlay bg-black bg-opacity-40"></div>
-      <div className="bg-[#F3F3F3] md:p-12">
+      <div className="bg-black bg-opacity-60 md:p-12 rounded-lg">
         <div className="text-center mb-5">
-          <h3 className="text-lg md:text-3xl font-bold uppercase border-b-4  py-3">
-            Add Property
+          <h3 className="text-lg md:text-3xl font-bold uppercase border-b-4 border-red-600  py-3 text-white">
+            <span className="text-red-600">Add</span> Property
           </h3>
         </div>
         <form
@@ -75,7 +82,7 @@ const AddProperty = () => {
           <div className="flex gap-1 md:gap-6">
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text">Property Title*</span>
+                <span className="text-white">Property Title*</span>
               </label>
               <input
                 type="text"
@@ -84,25 +91,10 @@ const AddProperty = () => {
                 required
                 className="input input-bordered w-full"
               />
-            </div>{" "}
-            <div className="form-control w-full">
-              <label className="label">
-                <span className="label-text">Date*</span>
-              </label>
-              <input
-                type="date"
-                {...register("date", { required: true })}
-                placeholder="Property Title"
-                required
-                className="input input-bordered w-full"
-              />
             </div>
-          </div>
-
-          <div className="flex gap-1 md:gap-6">
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text">Property Location*</span>
+                <span className="text-white">Property Location*</span>
               </label>
               <input
                 type="text"
@@ -112,9 +104,14 @@ const AddProperty = () => {
                 className="input input-bordered w-full"
               />
             </div>
+           
+          </div>
+
+          <div className="flex gap-1 md:gap-6">
+            
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text">Price*</span>
+                <span className="text-white">Price*</span>
               </label>
               <input
                 type="text"
@@ -123,10 +120,52 @@ const AddProperty = () => {
                 className="input input-bordered w-full"
               />
             </div>
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="text-white">Agent Name*</span>
+              </label>
+              <input
+                type="text"
+                {...register("name", { required: true })}
+                placeholder="User Role"
+                readOnly
+                defaultValue={allUser?.name}
+                className="input input-bordered w-full"
+              />
+            </div>
+          </div>
+          <div className="flex gap-1 md:gap-6">
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="text-white">Email*</span>
+              </label>
+              <input
+                type="text"
+                {...register("email", { required: true })}
+                placeholder="Email"
+                defaultValue={allUser?.email}
+                readOnly
+                className="input input-bordered w-full"
+              />
+            </div>
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="text-white">Agent Image</span>
+              </label>
+              <input
+                type="text"
+                {...register("agentImage", { required: true })}
+                placeholder="Image"
+                defaultValue={user?.photoURL}
+                required
+                className="input input-bordered w-full"
+              />
+            </div>
+            
           </div>
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text">Property Image*</span>
+              <span className="text-white">Property Image*</span>
             </label>
             <input
               {...register("image", { required: true })}
@@ -135,7 +174,8 @@ const AddProperty = () => {
             />
           </div>
           <div className="flex items-center justify-center">
-            <button className="btn bg-gradient-to-r from-[#835D23] to-[#B58130] ... text-white ">
+            <button className="btn btn-outline border-red-600 text-white font-bold hover:bg-red-600
+            ">
               Add Property
               <FaHouseUser></FaHouseUser>
             </button>
