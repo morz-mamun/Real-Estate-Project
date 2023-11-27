@@ -15,7 +15,6 @@ const useUserRole = () => {
             return res.data
         }
     })
-
     return [data, isPending]
 };
 

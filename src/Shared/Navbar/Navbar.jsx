@@ -2,9 +2,11 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import RoofingIcon from "@mui/icons-material/Roofing";
 import Swal from "sweetalert2";
+import useUserRole from "../../Hooks/useUserRole";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+  const [data] = useUserRole()
 
   // sweetAlert
   const Toast = Swal.mixin({
@@ -26,11 +28,11 @@ const Navbar = () => {
       <li>
         <NavLink to={"/allProperties"}>All Properties</NavLink>
       </li>
+      { data?.role === 'admin' || data?.role === 'agent' ? <li>
+        <NavLink to={"/addProperty"}>Add Property</NavLink>
+      </li> : '' }
       <li>
         <NavLink to={"dashboard"}>Dashboard</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/registration"}>Home</NavLink>
       </li>
     </>
   );
