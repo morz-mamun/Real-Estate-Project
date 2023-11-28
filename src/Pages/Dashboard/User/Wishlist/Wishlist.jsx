@@ -1,8 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../Hooks/useAuth";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
-import SectionTitle from "../../../../Components/SectionTitle";
-import PropertyCart from "../../../Registration/AddProperty/PropertyCart";
 import WishCart from "./WishCart";
 import Cover from "../../../../Shared/Cover/Cover";
 import dashbg from '../../../../assets/dashbg.jpg'

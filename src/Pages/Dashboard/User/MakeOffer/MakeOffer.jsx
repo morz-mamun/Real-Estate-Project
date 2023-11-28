@@ -6,7 +6,7 @@ import { useLoaderData } from "react-router-dom";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 
 const MakeOffer = () => {
-  const [{ title, location, agentName, price, userEmail, userName }] =
+  const [{ title, location, agentName, price, userEmail, userName , propertyImage}] =
     useLoaderData();
   const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
@@ -20,13 +20,14 @@ const MakeOffer = () => {
       agentName: data.agentName,
       buyerEmail: data.buyerEmail,
       buyerName: data.buyerName,
-      status: 'pending'
+      propertyImage: data.propertyImage,
+      status: "pending",
     };
 
     console.log(property);
     const propertyRes = await axiosPublic.post("/offeredProperty", property);
     if (propertyRes.data.insertedId) {
-        reset()
+      reset();
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -138,16 +139,30 @@ const MakeOffer = () => {
               />
             </div>
           </div>
-          <div className="form-control w-full">
-            <label className="label">
-              <span className="text-white">Offered Amount*</span>
-            </label>
-            <input
-              type="text"
-              {...register("offeredAmount", { required: true })}
-              placeholder={`${price} input amount between price range.`}
-              className="input input-bordered w-full"
-            />
+          <div className="flex gap-1 md:gap-6">
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="text-white">Offered Amount*</span>
+              </label>
+              <input
+                type="text"
+                {...register("offeredAmount", { required: true })}
+                placeholder={`${price} input amount between price range.`}
+                className="input input-bordered w-full"
+              />
+            </div>
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="text-white">Property Image*</span>
+              </label>
+              <input
+                {...register("propertyImage", { required: true })}
+                type="text"
+                defaultValue={propertyImage}
+                readOnly
+                className="file-input file-input-bordered w-full max-w-xs"
+              />
+            </div>
           </div>
 
           <div className="flex items-center justify-center">
