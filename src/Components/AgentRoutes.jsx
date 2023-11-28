@@ -14,19 +14,19 @@ const AgentRoutes = () => {
             </NavLink>
           </li>
           <li className="uppercase text-white font-bold">
-            <NavLink to={"/dashboard/addProperties"}>
+            <NavLink to={"/dashboard/abc"}>
              <MdAddBusiness className="text-white text-lg"></MdAddBusiness>
             My Added Properties
             </NavLink>
           </li>
           <li className="uppercase text-white font-bold">
-            <NavLink to={"/dashboard/PropertyBought"}>
+            <NavLink to={"/dashboard/soldProperties"}>
              <BiSolidBank className="text-white text-lg"></BiSolidBank>
               My sold Properties
             </NavLink>
           </li>
           <li className="uppercase text-white font-bold">
-            <NavLink to={"/dashboard/UserReviews"}>
+            <NavLink to={"/dashboard/requestedProperties"}>
              <MdOutlineRequestQuote className="text-white text-lg"></MdOutlineRequestQuote>
               Requested Properties
             </NavLink>

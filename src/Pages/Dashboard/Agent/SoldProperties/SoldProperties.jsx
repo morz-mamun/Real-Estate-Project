@@ -3,7 +3,7 @@
 const SoldProperties = () => {
     return (
         <div>
-            
+            hello
         </div>
     );
 };

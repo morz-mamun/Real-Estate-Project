@@ -1,6 +1,5 @@
 import useAuth from "../../../../Hooks/useAuth";
-import Cover from "../../../../Shared/Cover/Cover";
-import dashbg from "../../../../assets/dashbg.jpg";
+
 
 const MyProfile = () => {
   const { user } = useAuth();

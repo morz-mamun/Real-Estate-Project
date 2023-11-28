@@ -18,6 +18,10 @@ import MyReview from "../Pages/Dashboard/User/MyReview/MyReview";
 import MyProfile from "../Pages/Dashboard/User/MyProfle/MyProfile";
 import Error from "../Pages/Error/Error";
 import AgentProfile from "../Pages/Dashboard/Agent/AgentProfile/AgentProfile";
+import RequestedProperties from "../Pages/Dashboard/Agent/RequestedProperties/RequestedProperties";
+import SoldProperties from "../Pages/Dashboard/Agent/SoldProperties/SoldProperties";
+import AddAgentProperty from "../Pages/Dashboard/Agent/AddAgentProperty/AddAgentProperty";
+
 
 export const router = createBrowserRouter([
   {
@@ -46,9 +50,9 @@ export const router = createBrowserRouter([
         element: <PrivateRoute><AllProperty></AllProperty></PrivateRoute>
       },
       {
-        path: '/propertyDetails/:id',
+        path: '/propertyDetails/:email/:id',
         element: <PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/allProperty/${params.id}`)
+        loader: ({params}) => fetch(`http://localhost:5000/allProperty/${params.email}/${params.id}`)
       },
       
     ],
@@ -73,6 +77,18 @@ export const router = createBrowserRouter([
       {
         path: 'agentProfile',
         element: <AgentProfile></AgentProfile>
+      },
+      {
+       path: 'abc',
+       element: <AddAgentProperty></AddAgentProperty>
+      },
+      {
+        path: 'soldProperties',
+        element: <SoldProperties></SoldProperties>
+      },
+      {
+        path: 'requestedProperties',
+        element: <RequestedProperties></RequestedProperties>
       },
 
 
