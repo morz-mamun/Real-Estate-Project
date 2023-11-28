@@ -14,10 +14,15 @@ import PropertyDetails from "../Pages/AllProperty/PropertyDetails";
 import Wishlist from "../Pages/Dashboard/User/Wishlist/Wishlist";
 import MakeOffer from "../Pages/Dashboard/User/MakeOffer/MakeOffer";
 import PropertyBought from "../Pages/Dashboard/User/PropertyBought/PropertyBought";
+import MyReview from "../Pages/Dashboard/User/MyReview/MyReview";
+import MyProfile from "../Pages/Dashboard/User/MyProfle/MyProfile";
+import Error from "../Pages/Error/Error";
+import AgentProfile from "../Pages/Dashboard/Agent/AgentProfile/AgentProfile";
 
 export const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <Error></Error>,
     element: <Main></Main>,
     children: [
       {
@@ -51,6 +56,7 @@ export const router = createBrowserRouter([
     //Dashboard routes
   {
     path: "dashboard",
+    errorElement: <Error></Error>,
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
       //admin routes
@@ -63,8 +69,18 @@ export const router = createBrowserRouter([
         element: <AdminRoute><ManageProperties></ManageProperties></AdminRoute>
       },
 
+      // Agent routes => 
+      {
+        path: 'agentProfile',
+        element: <AgentProfile></AgentProfile>
+      },
+
 
       // user routes
+      {
+        path: 'userProfile',
+        element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
+      },
       {
         path: 'wishlist',
         element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>
@@ -77,6 +93,10 @@ export const router = createBrowserRouter([
       {
         path: 'PropertyBought',
         element: <PrivateRoute><PropertyBought></PropertyBought></PrivateRoute>
+      },
+      {
+        path: 'UserReviews',
+        element: <PrivateRoute><MyReview></MyReview></PrivateRoute>
       }
       
     ],
