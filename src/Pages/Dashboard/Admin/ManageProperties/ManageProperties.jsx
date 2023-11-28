@@ -1,8 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import SectionTitle from "../../../../Components/SectionTitle";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
-import { MdDelete, MdVerified } from "react-icons/md";
-import { FiUserX } from "react-icons/fi";
 import Swal from "sweetalert2";
 
 const ManageProperties = () => {

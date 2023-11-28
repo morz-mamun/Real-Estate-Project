@@ -9,8 +9,8 @@ import useUserRole from "../../Hooks/useUserRole";
 const Dashboard = () => {
 const [allUser] = useUserRole()
   return (
-    <div className="flex">
-      <div className="w-72 min-h-screen text-center py-5 bg-slate-600">
+    <div className="flex gap-1">
+      <div className="w-36 md:w-72 min-h-screen text-center py-5 bg-slate-600">
         <div>
           <p className="btn btn-ghost md:text-xl uppercase text-white">
             <span className="text-[#5afc03]">Mor</span>ZE
@@ -43,7 +43,7 @@ const [allUser] = useUserRole()
           </li>
         </ul>
       </div>
-      <div className="flex-1 px-5">
+      <div className="flex-1 md:p-10">
         <Outlet></Outlet>
       </div>
     </div>

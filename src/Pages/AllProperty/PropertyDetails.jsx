@@ -40,7 +40,8 @@ const PropertyDetails = () => {
 
   const handleWishlist = () => {
     const wishPropertyInfo = {
-      userEmail: user.email,   
+      userEmail: user.email,
+      userName: user.displayName,   
       propertyImage: propertyImage,
       title: title,
       location: location,

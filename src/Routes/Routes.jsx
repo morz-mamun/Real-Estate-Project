@@ -12,6 +12,8 @@ import AdminRoute from "./AdminRoute";
 import ManageProperties from "../Pages/Dashboard/Admin/ManageProperties/ManageProperties";
 import PropertyDetails from "../Pages/AllProperty/PropertyDetails";
 import Wishlist from "../Pages/Dashboard/User/Wishlist/Wishlist";
+import MakeOffer from "../Pages/Dashboard/User/MakeOffer/MakeOffer";
+import PropertyBought from "../Pages/Dashboard/User/PropertyBought/PropertyBought";
 
 export const router = createBrowserRouter([
   {
@@ -42,7 +44,7 @@ export const router = createBrowserRouter([
         path: '/propertyDetails/:id',
         element: <PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/allProperty/${params.id}`)
-      }
+      },
       
     ],
   },
@@ -66,7 +68,17 @@ export const router = createBrowserRouter([
       {
         path: 'wishlist',
         element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>
+      },
+      {
+        path: 'makeOffer/:email/:id',
+        element: <PrivateRoute><MakeOffer></MakeOffer></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/wishlist/${params.email}/${params.id}`)
+      },
+      {
+        path: 'PropertyBought',
+        element: <PrivateRoute><PropertyBought></PropertyBought></PrivateRoute>
       }
+      
     ],
   },
 ]);
