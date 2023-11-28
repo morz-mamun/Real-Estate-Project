@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 const ManageProperties = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: allProperties = [] } = useQuery({
+  const { data: allProperties = [], refetch } = useQuery({
     queryKey: ["allProperties"],
     queryFn: async () => {
       const res = await axiosSecure.get("/allProperty");
@@ -30,21 +30,13 @@ const ManageProperties = () => {
 
   // handle verify by admin property
   const handleVerify = (property) => {
-    const { _id, title, location, price, propertyImage, name, agentImage } =
-      property;
+    const { _id } = property;
     const propertyInfo = {
-    //   propertyId: _id,
-    //   propertyImage: propertyImage,
-    //   title: title,
-    //   location: location,
-    //   agentName: name,
-    //   agentImage: agentImage,
       status: "verified",
-    //   price: price,
     };
 
     axiosSecure
-      .patch(`/allProperty/verified/${_id}`, propertyInfo)
+      .patch(`/allProperty/${_id}`, propertyInfo)
       .then((result) => {
         if (result.data.modifiedCount > 0) {
           Toast.fire({
@@ -61,7 +53,31 @@ const ManageProperties = () => {
       });
   };
 
-  const handleReject = (property) => {};
+  const handleReject = (property) => {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+            axiosSecure.delete(`/allProperty/${property._id}`)
+            .then(res => {
+                if(res.data.deletedCount > 0){
+                    refetch()
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                      });
+                }
+            })
+        }
+      });
+  }
   return (
     <div>
       <SectionTitle heading={"Manage All users"}></SectionTitle>

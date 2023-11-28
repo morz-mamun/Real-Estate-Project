@@ -11,6 +11,7 @@ import AllProperty from "../Pages/AllProperty/AllProperty";
 import AdminRoute from "./AdminRoute";
 import ManageProperties from "../Pages/Dashboard/Admin/ManageProperties/ManageProperties";
 import PropertyDetails from "../Pages/AllProperty/PropertyDetails";
+import Wishlist from "../Pages/Dashboard/User/Wishlist/Wishlist";
 
 export const router = createBrowserRouter([
   {
@@ -58,6 +59,13 @@ export const router = createBrowserRouter([
       {
         path: 'manageProperties',
         element: <AdminRoute><ManageProperties></ManageProperties></AdminRoute>
+      },
+
+
+      // user routes
+      {
+        path: 'wishlist',
+        element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>
       }
     ],
   },

@@ -13,13 +13,12 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddProperty = () => {
-  const {user} = useAuth()  
+  const { user } = useAuth();
   const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const [allUser] = useUserRole();
-  const navigate = useNavigate()
-  
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     // image upload to imgbb and then get an url
@@ -40,6 +39,7 @@ const AddProperty = () => {
         name: data.name,
         agentImage: data.agentImage,
         propertyImage: res.data.data.display_url,
+        description: data.description
       };
       const propertyRes = await axiosSecure.post("/allProperty", property);
       if (propertyRes.data.insertedId) {
@@ -104,11 +104,9 @@ const AddProperty = () => {
                 className="input input-bordered w-full"
               />
             </div>
-           
           </div>
 
           <div className="flex gap-1 md:gap-6">
-            
             <div className="form-control w-full">
               <label className="label">
                 <span className="text-white">Price*</span>
@@ -150,7 +148,7 @@ const AddProperty = () => {
             </div>
             <div className="form-control w-full">
               <label className="label">
-                <span className="text-white">Agent Image</span>
+                <span className="text-white">Agent Image*</span>
               </label>
               <input
                 type="text"
@@ -161,7 +159,17 @@ const AddProperty = () => {
                 className="input input-bordered w-full"
               />
             </div>
-            
+          </div>
+          <div className="form-control w-full">
+            <label className="label">
+              <span className="text-white">Description*</span>
+            </label>
+            <textarea
+              {...register("description", { required: true })}
+              placeholder="Description"
+              required
+              className="input input-bordered w-full"
+            ></textarea>
           </div>
           <div className="form-control w-full">
             <label className="label">
@@ -174,8 +182,10 @@ const AddProperty = () => {
             />
           </div>
           <div className="flex items-center justify-center">
-            <button className="btn btn-outline border-red-600 text-white font-bold hover:bg-red-600
-            ">
+            <button
+              className="btn btn-outline border-red-600 text-white font-bold hover:bg-red-600
+            "
+            >
               Add Property
               <FaHouseUser></FaHouseUser>
             </button>

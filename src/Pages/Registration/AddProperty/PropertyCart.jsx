@@ -57,7 +57,7 @@ const PropertyCart = ({ property }) => {
         </div>
         <Link to={`/propertyDetails/${_id}`}>
           <div className="flex justify-center pb-4">
-            <button className="btn btn-outline border-0 border-b-4 border-red-600">
+            <button className="btn btn-outline border-b-4 shadow-xl font-bold  border-red-600">
               Details
             </button>
           </div>
