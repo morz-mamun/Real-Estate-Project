@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const BoughtCart = ({ property }) => {
   const {
     location, title, propertyImage, agentName, offerAmount , status

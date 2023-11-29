@@ -52,30 +52,30 @@ const ManageProperties = () => {
   };
 
   const handleReject = (property) => {
-    Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-      }).then((result) => {
-        if (result.isConfirmed) {
-            axiosSecure.delete(`/allProperty/${property._id}`)
-            .then(res => {
-                if(res.data.deletedCount > 0){
-                    refetch()
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your file has been deleted.",
-                        icon: "success"
-                      });
-                }
-            })
+    const { _id } = property;
+    const propertyInfo = {
+      status: "rejected",
+    };
+
+    axiosSecure
+      .patch(`/allProperty/${_id}`, propertyInfo)
+      .then((result) => {
+        if (result.data.modifiedCount > 0) {
+          Toast.fire({
+            icon: "success",
+            title: "Property Verified Successfully by Admin.",
+          });
         }
+      })
+      .catch(() => {
+        Toast.fire({
+          icon: "error",
+          title: "Something is Wrong!",
+        });
       });
-  }
+  };
+
+ 
   return (
     <div>
       <SectionTitle heading={"Manage All users"}></SectionTitle>
@@ -121,7 +121,8 @@ const ManageProperties = () => {
                     )}
                   </td>  */}
 
-                  <td className="space-y-4">
+                  { property?.status === 'verified' || property?.status === 'rejected' ? <span className="text-base text-green-600 font-bold">{property?.status === 'verified' ? 'verified' : <span className="text-red-600">{property?.status}</span>}</span> :
+                    <td className="space-y-4">
                    {  <button
                       onClick={() => handleVerify(property)}
                       className="btn bg-[#94df6c] btn-sm font-bold"
@@ -135,6 +136,7 @@ const ManageProperties = () => {
                       Reject
                     </button>
                   </td>
+                  }
                 </tr>
               ))}
             </tbody>

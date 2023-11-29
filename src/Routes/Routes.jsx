@@ -22,6 +22,8 @@ import RequestedProperties from "../Pages/Dashboard/Agent/RequestedProperties/Re
 import SoldProperties from "../Pages/Dashboard/Agent/SoldProperties/SoldProperties";
 import AddAgentProperty from "../Pages/Dashboard/Agent/AddAgentProperty/AddAgentProperty";
 import UpdateProperty from "../Pages/Dashboard/Agent/UpdateProperty/UpdateProperty";
+import AdminProfile from "../Pages/Dashboard/Admin/AdminProfile/AdminProfile";
+import ManageReview from "../Pages/Dashboard/Admin/manageReview/ManageReview";
 
 
 export const router = createBrowserRouter([
@@ -66,6 +68,10 @@ export const router = createBrowserRouter([
     children: [
       //admin routes
       {
+        path: "adminProfile",
+        element: <AdminRoute><AdminProfile></AdminProfile></AdminRoute>
+      },
+      {
         path: 'manageUsers',
         element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
       },
@@ -73,11 +79,15 @@ export const router = createBrowserRouter([
         path: 'manageProperties',
         element: <AdminRoute><ManageProperties></ManageProperties></AdminRoute>
       },
+      {
+        path: 'manageReviews',
+        element: <AdminRoute><ManageReview></ManageReview></AdminRoute>
+      },
 
       // Agent routes => 
       {
         path: 'agentProfile',
-        element: <AgentProfile></AgentProfile>
+        element: <PrivateRoute><AgentProfile></AgentProfile></PrivateRoute>
       },
       {
        path: 'addAgentProperty',

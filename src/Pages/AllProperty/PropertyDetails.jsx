@@ -50,7 +50,9 @@ const PropertyDetails = () => {
       agentName: data.agentName,
       reviewTime: data.reviewTime,
       reviewerEmail: data.reviewerEmail,
-      reviewDescription: data.reviewDescription
+      reviewDescription: data.reviewDescription,
+      reviewerName: data.reviewerName,
+      ReviewerImage: data.ReviewerImage
     }
 
     const reviewRes = await axiosPublic.post('/reviews', reviewInfo)
@@ -169,6 +171,7 @@ const PropertyDetails = () => {
                             {...register("title", { required: true })}
                             placeholder="Property Title"
                             defaultValue={title}
+                            readOnly
                             className="input text-black input-bordered w-full"
                           />
                         </div>
@@ -180,6 +183,7 @@ const PropertyDetails = () => {
                             type="text"
                             {...register("agentName", { required: true })}
                             placeholder="Agent Name"
+                            readOnly
                             defaultValue={name}
                             className="input text-black input-bordered w-full"
                           />
@@ -196,6 +200,7 @@ const PropertyDetails = () => {
                             {...register("reviewTime", { required: true })}
                             placeholder="Time"
                             defaultValue={time}
+                            readOnly
                             className="input text-black input-bordered w-full"
                           />
                         </div>
@@ -210,6 +215,37 @@ const PropertyDetails = () => {
                             })}
                             placeholder="Review Description"
                             defaultValue={user?.email}
+                            readOnly
+                            className="input text-black  input-bordered w-full"
+                          />
+                        </div>
+                      </div>
+                      <div className="flex gap-1 md:gap-6">
+                        <div className="form-control w-full">
+                          <label className="label">
+                            <span className="">Reviewer Name</span>
+                          </label>
+                          <input
+                            type="text"
+                            {...register("reviewerName", { required: true })}
+                            placeholder="Time"
+                            defaultValue={user?.displayName}
+                            readOnly
+                            className="input text-black input-bordered w-full"
+                          />
+                        </div>
+                        <div className="form-control w-full">
+                          <label className="label">
+                            <span className="">Reviewer Image</span>
+                          </label>
+                          <input
+                            type="text"
+                            {...register("ReviewerImage", {
+                              required: true,
+                            })}
+                            placeholder="Review Description"
+                            defaultValue={user?.photoURL}
+                            readOnly
                             className="input text-black  input-bordered w-full"
                           />
                         </div>
