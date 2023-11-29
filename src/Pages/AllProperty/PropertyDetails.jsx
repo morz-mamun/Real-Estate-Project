@@ -1,29 +1,29 @@
-import { useLoaderData } from "react-router-dom";
 import SectionTitle from "../../Components/SectionTitle";
-
 import Cover from "../../Shared/Cover/Cover";
 import coverBg from "../../assets/coverbg.jpg";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
+import { useLoaderData } from "react-router-dom";
 
 const PropertyDetails = () => {
-    const axiosPublic = useAxiosPublic();
-    const {user} = useAuth()
-  const [
-    {
-      _id,
-      title,
-      propertyImage,
-      location,
-      name,
-      agentImage,
-      price,
-      description,
-      status,
-    },
-  ] = useLoaderData();
+  const axiosPublic = useAxiosPublic();
+  const { user } = useAuth();
 
+  const {
+    _id,
+    title,
+    propertyImage,
+    location,
+    name,
+    email,
+    agentImage,
+    price,
+    description,
+    status,
+  } = useLoaderData();
+  
+  
   const Toast = Swal.mixin({
     toast: true,
     position: "top",
@@ -36,16 +36,15 @@ const PropertyDetails = () => {
     timerProgressBar: true,
   });
 
- 
-
   const handleWishlist = () => {
     const wishPropertyInfo = {
       userEmail: user.email,
-      userName: user.displayName,   
+      userName: user.displayName,
       propertyImage: propertyImage,
       title: title,
       location: location,
       agentName: name,
+      agentEmail: email,
       agentImage: agentImage,
       status: status,
       price: price,

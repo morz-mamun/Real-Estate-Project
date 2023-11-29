@@ -27,7 +27,7 @@ import UpdateProperty from "../Pages/Dashboard/Agent/UpdateProperty/UpdateProper
 export const router = createBrowserRouter([
   {
     path: "/",
-    errorElement: <Error></Error>,
+    // errorElement: <Error></Error>,
     element: <Main></Main>,
     children: [
       {
@@ -51,9 +51,9 @@ export const router = createBrowserRouter([
         element: <PrivateRoute><AllProperty></AllProperty></PrivateRoute>
       },
       {
-        path: '/propertyDetails/:email/:id',
+        path: '/propertyDetails/:id',
         element: <PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/allProperty/${params.email}/${params.id}`)
+        loader: ({params}) => fetch(`http://localhost:5000/allProperty/${params.id}`)
       },
       
     ],
@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
     //Dashboard routes
   {
     path: "dashboard",
-    errorElement: <Error></Error>,
+    // errorElement: <Error></Error>,
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
       //admin routes
@@ -84,9 +84,9 @@ export const router = createBrowserRouter([
        element: <AddAgentProperty></AddAgentProperty>
       },
       {
-        path: 'update/:email/:id',
+        path: 'update/:id',
         element: <UpdateProperty></UpdateProperty>,
-        loader: ({params}) => fetch(`http://localhost:5000/allProperty/${params.email}/${params.id}`)
+        loader: ({params}) => fetch(`http://localhost:5000/allProperty/${params.id}`)
       },
       {
         path: 'soldProperties',

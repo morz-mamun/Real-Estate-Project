@@ -6,7 +6,8 @@ import { useLoaderData } from "react-router-dom";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 
 const MakeOffer = () => {
-  const [{ title, location, agentName, price, userEmail, userName , propertyImage}] =
+  const [{ title, location, agentName, price, userEmail, agentEmail
+,    userName , propertyImage}] =
     useLoaderData();
   const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
@@ -18,6 +19,7 @@ const MakeOffer = () => {
       location: data.location,
       offerAmount: data.offeredAmount,
       agentName: data.agentName,
+      agentEmail: data.agentEmail,
       buyerEmail: data.buyerEmail,
       buyerName: data.buyerName,
       propertyImage: data.propertyImage,
@@ -99,6 +101,22 @@ const MakeOffer = () => {
             </div>
             <div className="form-control w-full">
               <label className="label">
+                <span className="text-white">Agent Email*</span>
+              </label>
+              <input
+                type="text"
+                {...register("agentEmail", { required: true })}
+                placeholder='Agent Email'
+                defaultValue={agentEmail}
+                readOnly
+                className="input input-bordered w-full"
+              />
+            </div>
+           
+          </div>
+          <div className="flex gap-1 md:gap-6">
+          <div className="form-control w-full">
+              <label className="label">
                 <span className="text-white">Buying Date*</span>
               </label>
               <input
@@ -108,6 +126,18 @@ const MakeOffer = () => {
                 defaultValue=""
                 required
                 className="input input-bordered w-full"
+              />
+            </div>
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="text-white">Property Image*</span>
+              </label>
+              <input
+                {...register("propertyImage", { required: true })}
+                type="text"
+                defaultValue={propertyImage}
+                readOnly
+                className="file-input file-input-bordered w-full max-w-xs"
               />
             </div>
           </div>
@@ -134,13 +164,13 @@ const MakeOffer = () => {
                 {...register("buyerName", { required: true })}
                 placeholder="Image"
                 defaultValue={userName}
-                required
+                readOnly
                 className="input input-bordered w-full"
               />
             </div>
           </div>
-          <div className="flex gap-1 md:gap-6">
-            <div className="form-control w-full">
+         
+          <div className="form-control w-full">
               <label className="label">
                 <span className="text-white">Offered Amount*</span>
               </label>
@@ -151,20 +181,6 @@ const MakeOffer = () => {
                 className="input input-bordered w-full"
               />
             </div>
-            <div className="form-control w-full">
-              <label className="label">
-                <span className="text-white">Property Image*</span>
-              </label>
-              <input
-                {...register("propertyImage", { required: true })}
-                type="text"
-                defaultValue={propertyImage}
-                readOnly
-                className="file-input file-input-bordered w-full max-w-xs"
-              />
-            </div>
-          </div>
-
           <div className="flex items-center justify-center">
             <button
               className="btn btn-outline border-red-600 text-white font-bold hover:bg-red-600

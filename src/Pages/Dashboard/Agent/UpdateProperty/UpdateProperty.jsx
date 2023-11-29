@@ -12,8 +12,7 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const UpdateProperty = () => {
-  const { user } = useAuth();
-  const [{ _id, title, location, name, status, email, price }] =
+  const { _id, title, location, name, status, email, price }=
     useLoaderData();
 
   const axiosSecure = useAxiosSecure();
@@ -40,6 +39,7 @@ const UpdateProperty = () => {
         propertyInfo
       );
       if (propertyUpdate.data.modifiedCount > 0) {
+        reset()
         Swal.fire({
           position: "top-end",
           icon: "success",

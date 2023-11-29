@@ -57,7 +57,7 @@ const PropertyCart = ({ property }) => {
           <div className="font-semibold">Price Range: ${price}</div>
           <div className="font-bold text-green-600">{status}</div>
         </div>
-        <Link to={`/propertyDetails/${user?.email}/${_id}`}>
+        <Link to={`/propertyDetails/${_id}`}>
           <div className="flex justify-center pb-4">
             <button className="btn btn-outline border-b-4 shadow-xl font-bold  border-red-600">
               Details
