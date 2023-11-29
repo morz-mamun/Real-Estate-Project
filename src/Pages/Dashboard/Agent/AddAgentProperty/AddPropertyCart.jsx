@@ -11,7 +11,8 @@ const AddPropertyCart = ({property, refetch}) => {
 
     const axiosSecure = useAxiosSecure()
 
-    const handleDelete = (id) => {
+    const handleDelete = () => {
+      
       Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -22,7 +23,7 @@ const AddPropertyCart = ({property, refetch}) => {
         confirmButtonText: "Yes, delete it!"
       }).then(async(result) => {
         if (result.isConfirmed) {
-           const res = await axiosSecure.delete(`/allProperty/${id}}`)
+           const res = await axiosSecure.delete(`/allProperty/${_id}`)
            if(res.data.deletedCount > 0){
             refetch()
             Swal.fire({
@@ -87,7 +88,7 @@ const AddPropertyCart = ({property, refetch}) => {
           </div>
         </Link>
         <div>
-            <button onClick={() => handleDelete(_id)} className="btn btn-sm md:btn-md btn-outline border-b-4 shadow-xl font-bold  border-red-600">
+            <button onClick={ handleDelete} className="btn btn-sm md:btn-md btn-outline border-b-4 shadow-xl font-bold  border-red-600">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
           </div>

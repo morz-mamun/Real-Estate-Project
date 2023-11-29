@@ -13,9 +13,9 @@ const [allUser] = useUserRole()
       <div className="w-36 md:w-72 min-h-screen text-center py-5 bg-slate-600">
         <div>
           <p className="btn btn-ghost md:text-xl uppercase text-white">
-            <span className="text-[#5afc03]">Mor</span>ZE
+            <span className="text-red-600">Mor</span>ZE
           </p>
-          <RoofingIcon style={{ color: "#5afc03", fontSize: 30 }}></RoofingIcon>
+          <RoofingIcon style={{ color: "red", fontSize: 30 }}></RoofingIcon>
         </div>
         {/* admin routes */}
 
