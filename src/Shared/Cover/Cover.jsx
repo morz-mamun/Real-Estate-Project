@@ -4,7 +4,7 @@ const Cover = ({img, title, description}) => {
     return (
       <div>
         <div
-          className="hero max-w-7xl mx-auto h-[200px] md:h-[300px]"
+          className="hero max-w-7xl overflow-x-scroll mx-auto h-[200px] md:h-[300px]"
           style={{
             backgroundImage:
               `url(${img})`,

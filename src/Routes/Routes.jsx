@@ -21,6 +21,7 @@ import AgentProfile from "../Pages/Dashboard/Agent/AgentProfile/AgentProfile";
 import RequestedProperties from "../Pages/Dashboard/Agent/RequestedProperties/RequestedProperties";
 import SoldProperties from "../Pages/Dashboard/Agent/SoldProperties/SoldProperties";
 import AddAgentProperty from "../Pages/Dashboard/Agent/AddAgentProperty/AddAgentProperty";
+import UpdateProperty from "../Pages/Dashboard/Agent/UpdateProperty/UpdateProperty";
 
 
 export const router = createBrowserRouter([
@@ -79,8 +80,13 @@ export const router = createBrowserRouter([
         element: <AgentProfile></AgentProfile>
       },
       {
-       path: 'abc',
+       path: 'addAgentProperty',
        element: <AddAgentProperty></AddAgentProperty>
+      },
+      {
+        path: 'update/:email/:id',
+        element: <UpdateProperty></UpdateProperty>,
+        loader: ({params}) => fetch(`http://localhost:5000/allProperty/${params.email}/${params.id}`)
       },
       {
         path: 'soldProperties',

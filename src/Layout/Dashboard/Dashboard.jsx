@@ -28,7 +28,7 @@ const [allUser] = useUserRole()
         {/* normal user role */}
         { allUser?.role === 'admin' || allUser?.role === 'agent' ? '' : <UserRoutes></UserRoutes>}
         <div className="border-b-2"></div>
-        <ul className="menu p-4 space-y-2">
+        <ul className="menu md:p-4 space-y-2">
           <li className="uppercase text-white font-bold">
             <NavLink to={"/"}>
               <FaHome></FaHome>
@@ -43,7 +43,7 @@ const [allUser] = useUserRole()
           </li>
         </ul>
       </div>
-      <div className="flex-1 md:p-10">
+      <div className="flex-1">
         <Outlet></Outlet>
       </div>
     </div>

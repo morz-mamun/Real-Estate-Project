@@ -51,7 +51,7 @@ const AddProperty = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        // navigate('/allProperty')
+        navigate('dashboard/addAgentProperty')
       } else {
         Swal.fire({
           position: "top-end",
@@ -76,7 +76,7 @@ const AddProperty = () => {
           </h3>
         </div>
         <form
-          className="space-y-2 md:space-y-6"
+          className="space-y-2 md:space-y-6 px-2"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="flex gap-1 md:gap-6">
@@ -181,7 +181,7 @@ const AddProperty = () => {
               className="file-input file-input-bordered w-full max-w-xs"
             />
           </div>
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center pb-2">
             <button
               className="btn btn-outline border-red-600 text-white font-bold hover:bg-red-600
             "

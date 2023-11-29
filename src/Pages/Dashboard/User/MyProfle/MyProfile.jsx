@@ -1,8 +1,8 @@
 import useAuth from "../../../../Hooks/useAuth";
 
-
 const MyProfile = () => {
   const { user } = useAuth();
+  
   return (
     <div className="flex flex-col md:flex-row gap-5">
       <div className="w-1/3 bg-slate-600 text-white p-5 space-y-5">
