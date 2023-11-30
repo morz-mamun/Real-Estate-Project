@@ -6,13 +6,13 @@ import { FaHouseUser } from "react-icons/fa";
 const ContactUs = () => {
   const { register, handleSubmit } = useForm();
   return (
-    <div className="max-w-7xl mx-auto my-20">
+    <div className="max-w-7xl mx-auto mb-20">
       <SectionTitle heading={"Knock Our Wall"}></SectionTitle>
       <div className="flex">
-        <div className="w-1/2 rounded-xl">
-          <img src={contact} alt="" />
+        <div className="w-1/2">
+          <img className="rounded-xl" src={contact} alt="" />
         </div>
-        <div className=" rounded-xl w-1/2">
+        <div className=" bg-slate-200 rounded-xl w-1/2">
           <form
             className="space-y-2 md:space-y-6 px-2"
             //   onSubmit={handleSubmit(onSubmit)}
