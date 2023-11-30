@@ -17,5 +17,5 @@ Real Estate Solution.
 
 
 ## 🔗 Website Live Link
- [![Website live link](https://img.shields.io/badge/DreamJob-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://morze-bb5a5.web.app/)
+ [![Website live link](https://img.shields.io/badge/MorZE-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://morze-bb5a5.web.app/)
 
