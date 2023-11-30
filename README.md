@@ -1,8 +1,21 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Project Title
 
-Currently, two official plugins are available:
+MorZE
+Real Estate Solution.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Website Features 
+
+- Full responsive navbar with active routes and toggle login and logout button. Also user profile image shown when user login.
+- In the home page any user can see all property that verified by admin.
+- After user register or login they can enter to the private routes and see private details also.
+- When user login User Can offer request the Agent that he want to buy. Agent can accept or reject the request.
+- There has a tree different role. Admin, agent, user. When user login user can see only user information and what admin want to show to the user. Agent can also see he/her information. The Thing is well protected website.
+- User can see all the wished properties that he/she add to wishlist. Also can give offer to agent or delete the property if they want.
+-User Can Payment if the agent accept their offer. 
+
+
+## 🔗 Website Live Link
+ [![Website live link](https://img.shields.io/badge/DreamJob-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://dream-job-finder.web.app/)
+
