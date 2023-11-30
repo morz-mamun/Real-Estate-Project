@@ -1,7 +1,10 @@
+import { RoofingOutlined } from "@mui/icons-material";
+
 const Footer = () => {
   return (
-    <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
-      <nav className="grid grid-flow-col gap-4">
+    <div>
+      <footer className="footer footer-center p-10 bg-slate-600  rounded text-white">
+      <nav className="grid grid-flow-col gap-4 font-bold">
         <a className="link link-hover">About us</a>
         <a className="link link-hover">Contact</a>
         <a className="link link-hover">All Properties</a>
@@ -45,9 +48,10 @@ const Footer = () => {
         </div>
       </nav>
       <aside>
-        <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+        <p>Copyright © 2023 - All right reserved by   <span className=" md:text-xl uppercase"><span className="text-red-600">Mor</span> ZE</span>  Industries Ltd.</p>
       </aside>
     </footer>
+    </div>
   );
 };
 
