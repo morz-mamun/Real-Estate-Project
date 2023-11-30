@@ -51,7 +51,7 @@ const AddProperty = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate('dashboard/addAgentProperty')
+        // navigate('dashboard/addAgentProperty')
       } else {
         Swal.fire({
           position: "top-end",
@@ -115,6 +115,7 @@ const AddProperty = () => {
                 type="text"
                 {...register("price", { required: true })}
                 placeholder="Price"
+                required
                 className="input input-bordered w-full"
               />
             </div>

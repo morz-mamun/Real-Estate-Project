@@ -18,7 +18,7 @@ const PropertyBought = () => {
 
     console.log(propertyBought);
     return (
-        <div className="overflow-x-scroll">
+        <div className="">
             <SectionTitle heading={'All Bought Property'}></SectionTitle>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
             {

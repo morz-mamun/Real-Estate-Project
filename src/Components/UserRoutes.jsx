@@ -19,7 +19,7 @@ const UserRoutes = () => {
             </NavLink>
           </li>
           <li className="uppercase text-white font-bold">
-            <NavLink to={"/dashboard/PropertyBought"}>
+            <NavLink to={"/dashboard/propertyBought"}>
              <FaHome className="text-white text-lg"></FaHome>
               Property Bought
             </NavLink>

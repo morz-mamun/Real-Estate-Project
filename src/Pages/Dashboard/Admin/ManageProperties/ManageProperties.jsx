@@ -37,6 +37,7 @@ const ManageProperties = () => {
       .patch(`/allProperty/${_id}`, propertyInfo)
       .then((result) => {
         if (result.data.modifiedCount > 0) {
+          refetch()
           Toast.fire({
             icon: "success",
             title: "Property Verified Successfully by Admin.",
@@ -61,6 +62,7 @@ const ManageProperties = () => {
       .patch(`/allProperty/${_id}`, propertyInfo)
       .then((result) => {
         if (result.data.modifiedCount > 0) {
+          refetch()
           Toast.fire({
             icon: "success",
             title: "Property Verified Successfully by Admin.",
@@ -108,18 +110,6 @@ const ManageProperties = () => {
                   <td>{property.name}</td>
                   <td>{property.email}</td>
                   <td>${property.price}</td>
-
-                  {/* <td className="space-x-2">
-                    {user.role === "admin" && (
-                      <span className="p-2 rounded-lg font-bold bg-[#94df6c]">Admin</span>
-                    )}
-                    {user.role === "agent" && (
-                      <span className="p-2 rounded-lg font-bold bg-[#94df6c]">Agent</span>
-                    )}
-                    {user.role === "fraud" && (
-                      <span className="p-2 rounded-lg font-bold bg-red-600 text-white">Fraud</span>
-                    )}
-                  </td>  */}
 
                   { property?.status === 'verified' || property?.status === 'rejected' ? <span className="text-base text-green-600 font-bold">{property?.status === 'verified' ? 'verified' : <span className="text-red-600">{property?.status}</span>}</span> :
                     <td className="space-y-4">

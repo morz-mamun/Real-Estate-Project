@@ -24,6 +24,7 @@ import AddAgentProperty from "../Pages/Dashboard/Agent/AddAgentProperty/AddAgent
 import UpdateProperty from "../Pages/Dashboard/Agent/UpdateProperty/UpdateProperty";
 import AdminProfile from "../Pages/Dashboard/Admin/AdminProfile/AdminProfile";
 import ManageReview from "../Pages/Dashboard/Admin/manageReview/ManageReview";
+import Payment from "../Pages/Dashboard/User/Payment/Payment";
 
 
 export const router = createBrowserRouter([
@@ -123,12 +124,17 @@ export const router = createBrowserRouter([
         loader: ({params}) => fetch(`http://localhost:5000/wishlist/${params.email}/${params.id}`)
       },
       {
-        path: 'PropertyBought',
+        path: 'propertyBought',
         element: <PrivateRoute><PropertyBought></PropertyBought></PrivateRoute>
       },
       {
         path: 'UserReviews',
         element: <PrivateRoute><MyReview></MyReview></PrivateRoute>
+      },
+      {
+        path: 'propertyBought/payment/:email/:id',
+        element: <PrivateRoute><Payment></Payment></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/offeredProperty/${params.email}/${params.id}`)
       }
       
     ],

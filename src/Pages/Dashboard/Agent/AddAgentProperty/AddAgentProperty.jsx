@@ -5,6 +5,7 @@ import AddPropertyCart from "./AddPropertyCart";
 import SectionTitle from "../../../../Components/SectionTitle";
 const AddAgentProperty = () => {
     const {user} = useAuth()
+    console.log(user.email);
     const axiosSecure = useAxiosSecure()
     const {data: allAddProperty, refetch} = useQuery({
         queryKey: ['allAddProperty'],
