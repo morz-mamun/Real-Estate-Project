@@ -136,7 +136,7 @@ const PropertyDetails = () => {
               </button>
             </div>
 
-            <div className="flex justify-center gap-5 pt-4">
+            <div className="flex justify-center gap-5 pt-4 pb-5">
               <button
                 className="btn btn-outline border-b-4 shadow-xl font-bold  border-red-600"
                 onClick={() =>
@@ -277,9 +277,6 @@ const PropertyDetails = () => {
               </dialog>
             </div>
           </div>
-        </div>
-        <div>
-          <SectionTitle heading={"Reviews"}></SectionTitle>
         </div>
       </div>
     </div>

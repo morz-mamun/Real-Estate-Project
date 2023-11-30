@@ -8,11 +8,11 @@ const ContactUs = () => {
   return (
     <div className="max-w-7xl mx-auto mb-20">
       <SectionTitle heading={"Knock Our Wall"}></SectionTitle>
-      <div className="flex">
-        <div className="w-1/2">
+      <div className="flex flex-col md:flex-row">
+        <div className="md:w-1/2">
           <img className="rounded-xl" src={contact} alt="" />
         </div>
-        <div className=" bg-slate-200 rounded-xl w-1/2">
+        <div className=" bg-slate-200 rounded-xl md:w-1/2">
           <form
             className="space-y-2 md:space-y-6 px-2"
             //   onSubmit={handleSubmit(onSubmit)}

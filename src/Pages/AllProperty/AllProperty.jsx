@@ -17,7 +17,7 @@ const AllProperty = () => {
         }
       })
     return (
-        <div>
+        <div className="max-w-7xl mx-auto">
            <Cover img={coverBg} title={'Unlock Your Dream Home'} description={'Where Dreams Find a Home, and Homes Become Dreams. Explore Possibilities Beyond Walls.'}></Cover>
            <SectionTitle heading={'All Properties'}></SectionTitle>
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

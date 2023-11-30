@@ -79,11 +79,11 @@ const ManageProperties = () => {
 
  
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <SectionTitle heading={"Manage All users"}></SectionTitle>
-      <div className="bg-slate-200 p-5 rounded-lg">
+      <div className="bg-slate-200 md:p-5 rounded-lg">
         <div className="py-5">
-          <h1 className="text-3xl font-bold uppercase">
+          <h1 className="md:text-3xl font-bold uppercase">
             Total Users: {allProperties.length}
           </h1>
         </div>

@@ -44,7 +44,7 @@ const SoldProperties = () => {
                   <td>{property.location}</td>
                   <td>{property.buyerEmail}</td>
                   <td>{property.buyerName}</td>
-                  <td>{property.offerAmount}</td>
+                  <td>${property.offerAmount}</td>
                 </tr>
               ))}
             </tbody>

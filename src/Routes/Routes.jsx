@@ -25,12 +25,13 @@ import UpdateProperty from "../Pages/Dashboard/Agent/UpdateProperty/UpdateProper
 import AdminProfile from "../Pages/Dashboard/Admin/AdminProfile/AdminProfile";
 import ManageReview from "../Pages/Dashboard/Admin/manageReview/ManageReview";
 import Payment from "../Pages/Dashboard/User/Payment/Payment";
+import AgentRoute from "./AgentRoute";
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    // errorElement: <Error></Error>,
+    errorElement: <Error></Error>,
     element: <Main></Main>,
     children: [
       {
@@ -56,7 +57,7 @@ export const router = createBrowserRouter([
       {
         path: '/propertyDetails/:id',
         element: <PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/allProperty/${params.id}`)
+        loader: ({params}) => fetch(`https://y-one-eta.vercel.app/allProperty/${params.id}`)
       },
       
     ],
@@ -64,7 +65,7 @@ export const router = createBrowserRouter([
     //Dashboard routes
   {
     path: "dashboard",
-    // errorElement: <Error></Error>,
+    errorElement: <Error></Error>,
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
       //admin routes
@@ -88,24 +89,24 @@ export const router = createBrowserRouter([
       // Agent routes => 
       {
         path: 'agentProfile',
-        element: <PrivateRoute><AgentProfile></AgentProfile></PrivateRoute>
+        element: <AgentRoute><AgentProfile></AgentProfile></AgentRoute>
       },
       {
        path: 'addAgentProperty',
-       element: <AddAgentProperty></AddAgentProperty>
+       element: <AgentRoute><AddAgentProperty></AddAgentProperty></AgentRoute>
       },
       {
         path: 'update/:id',
-        element: <UpdateProperty></UpdateProperty>,
-        loader: ({params}) => fetch(`http://localhost:5000/allProperty/${params.id}`)
+        element: <AgentRoute><UpdateProperty></UpdateProperty></AgentRoute>,
+        loader: ({params}) => fetch(`https://y-one-eta.vercel.app/allProperty/${params.id}`)
       },
       {
         path: 'soldProperties',
-        element: <SoldProperties></SoldProperties>
+        element: <AgentRoute><SoldProperties></SoldProperties></AgentRoute>
       },
       {
         path: 'requestedProperties',
-        element: <RequestedProperties></RequestedProperties>
+        element: <AgentRoute><RequestedProperties></RequestedProperties></AgentRoute>
       },
 
 
@@ -121,7 +122,7 @@ export const router = createBrowserRouter([
       {
         path: 'makeOffer/:email/:id',
         element: <PrivateRoute><MakeOffer></MakeOffer></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/wishlist/${params.email}/${params.id}`)
+        loader: ({params}) => fetch(`https://y-one-eta.vercel.app/wishlist/${params.email}/${params.id}`)
       },
       {
         path: 'propertyBought',
@@ -134,7 +135,7 @@ export const router = createBrowserRouter([
       {
         path: 'propertyBought/payment/:email/:id',
         element: <PrivateRoute><Payment></Payment></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/offeredProperty/${params.email}/${params.id}`)
+        loader: ({params}) => fetch(`https://y-one-eta.vercel.app/offeredProperty/${params.email}/${params.id}`)
       }
       
     ],
