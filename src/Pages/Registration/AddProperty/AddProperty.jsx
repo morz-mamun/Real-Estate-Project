@@ -28,6 +28,7 @@ const AddProperty = () => {
         "content-type": "multipart/form-data",
       },
     });
+
     if (res.data.success) {
       //now send the property data to the server with image url
       const property = {

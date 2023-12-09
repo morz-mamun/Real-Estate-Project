@@ -55,7 +55,7 @@ const SocialLogin = () => {
           onClick={handleGoogleLogin}
           className="flex items-center gap-2 btn btn-outline"
         >
-          <FaGoogle className="text-red-600 text-xl"></FaGoogle> <span className="text-white"> Google Sing In</span> 
+          <FaGoogle className="text-red-600 text-xl"></FaGoogle> <span className="text-white"> Google Sign In</span> 
         </button>
       </div>
         </div>
