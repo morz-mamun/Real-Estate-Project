@@ -36,7 +36,7 @@ const [allUser] = useUserRole()
             </NavLink>
           </li>
           <li className="uppercase text-white font-bold">
-            <NavLink to={"/ourOrder/contact"}>
+            <NavLink to={"/dashboard/contact"}>
               <FaAddressCard></FaAddressCard>
               Contact
             </NavLink>

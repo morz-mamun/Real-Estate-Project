@@ -32,7 +32,7 @@ const Navbar = () => {
         <NavLink to={"/addProperty"}>Add Property</NavLink>
       </li> : '' }
       <li>
-        <NavLink to={"dashboard"}>Dashboard</NavLink>
+        <NavLink to={"/dashboard"}>Dashboard</NavLink>
       </li>
     </>
   );

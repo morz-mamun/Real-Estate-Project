@@ -26,6 +26,7 @@ import AdminProfile from "../Pages/Dashboard/Admin/AdminProfile/AdminProfile";
 import ManageReview from "../Pages/Dashboard/Admin/manageReview/ManageReview";
 import Payment from "../Pages/Dashboard/User/Payment/Payment";
 import AgentRoute from "./AgentRoute";
+import Contact from "../Pages/Contact/Contact";
 
 
 export const router = createBrowserRouter([
@@ -136,6 +137,10 @@ export const router = createBrowserRouter([
         path: 'propertyBought/payment/:email/:id',
         element: <PrivateRoute><Payment></Payment></PrivateRoute>,
         loader: ({params}) => fetch(`https://y-one-eta.vercel.app/offeredProperty/${params.email}/${params.id}`)
+      },
+      {
+        path:"contact",
+        element: <PrivateRoute><Contact></Contact></PrivateRoute>
       }
       
     ],
